@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://co5lctkrfkckh"]
+[gd_scene load_steps=11 format=3 uid="uid://co5lctkrfkckh"]
 
 [ext_resource type="Texture2D" uid="uid://byfyj11ph26y2" path="res://assets/sprites/dynamic/blockIdle.png" id="1_jgs4c"]
 
@@ -59,8 +59,16 @@ animations = [{
 "speed": 13.0
 }]
 
-[node name="player" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_klsyc"]
+size = Vector2(20, 19)
+
+[node name="player" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bs75h")
-frame_progress = 0.90169
+autoplay = "default"
+frame_progress = 0.254224
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_klsyc")
