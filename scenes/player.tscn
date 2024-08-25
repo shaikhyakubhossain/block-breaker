@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://co5lctkrfkckh"]
+[gd_scene load_steps=12 format=3 uid="uid://co5lctkrfkckh"]
 
 [ext_resource type="Texture2D" uid="uid://byfyj11ph26y2" path="res://assets/sprites/dynamic/blockIdle.png" id="1_jgs4c"]
+[ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_vmpwh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7323g"]
 atlas = ExtResource("1_jgs4c")
@@ -63,11 +64,12 @@ animations = [{
 size = Vector2(20, 19)
 
 [node name="player" type="CharacterBody2D"]
+script = ExtResource("1_vmpwh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bs75h")
 autoplay = "default"
-frame_progress = 0.254224
+frame_progress = 0.682314
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
