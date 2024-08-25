@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd5yeoocw4i1l"]
+
+[ext_resource type="Texture2D" uid="uid://ggg7r3tbsj7o" path="res://assets/sprites/static/worldTiles.png" id="1_m64e8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e3uvw"]
+texture = ExtResource("1_m64e8")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -8.75, 16, -8.75, 16, 12, -16, 11)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -8.75, 16, -8.75, 16, 12, -16, 11)
+
+[sub_resource type="TileSet" id="TileSet_rd1fq"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_e3uvw")
+
+[node name="TileMap" type="TileMap"]
+position = Vector2(-13, 1)
+tile_set = SubResource("TileSet_rd1fq")
+format = 2
+layer_0/tile_data = PackedInt32Array(65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, -131068, 1, 0, -131067, 1, 0, -131066, 1, 0, -131065, 1, 0, -131064, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, -327676, 1, 0, -327675, 1, 0, -327674, 1, 0, -327673, 1, 0, -327672, 1, 0, -458755, 1, 0, -458754, 1, 0, -458753, 1, 0, -524288, 1, 0, -524287, 1, 0)
