@@ -1,0 +1,39 @@
+name: Export, Zip, and Deploy to itch.io
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Godot
+        uses: firebelley/godot-export@v5.2.1
+        with:
+          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_export_templates.tpz
+          relative_project_path: ./
+
+      - name: Export Godot project
+        run: godot --export "WindowsDesktop" "builds/block-breaker.exe"
+
+      - name: Bundle into Zip
+        run: |
+          mkdir -p builds/zipped
+          zip -r "builds/zipped/block-breaker-win-64.zip" builds/block-breaker.exe builds/data_block-breaker_windows_x86_64
+
+      - name: Install butler
+        run: |
+          curl -L https://broth.itch.ovh/butler/linux-amd64/head/butler.tar.gz | tar xz
+          sudo mv butler /usr/local/bin/butler
+
+      - name: Deploy to itch.io
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_API_KEY }}
+        run: |
+          butler push builds/zipped/block-breaker-win-64.zip shaikh-yakub-hossain/block-breaker:windows
