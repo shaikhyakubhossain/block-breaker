@@ -20,7 +20,7 @@ jobs:
           relative_project_path: ./
 
       - name: Export Godot project
-        run: godot --export "Windows Desktop" "builds/block-breaker.exe"
+        run: godot --export "WindowsDesktop" "builds/block-breaker.exe"
 
       - name: Bundle into Zip
         run: |
