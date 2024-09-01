@@ -12,15 +12,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Godot
+      - name: Godot Export
+        id: godotExport
         uses: firebelley/godot-export@v5.2.1
         with:
           godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_linux.x86_64.zip
           godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_export_templates.tpz
           relative_project_path: ./
           archive_output: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          cache: true
+
+      - name: release
+        uses: googleapis/release-please-action@v3.1.2
+        with:
+          package-name: block-breaker
+          token: ${{ secrets.GH_TOKEN }}
+          release-type: simple
+          path: ${{ steps.godotExport.outputs.archive_directory }}
 
       # - name: Install butler
       #   run: |
