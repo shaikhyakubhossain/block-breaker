@@ -27,12 +27,12 @@ jobs:
         
 
       - name: release
-        uses: googleapis/release-please-action@v3.1.2
+        uses: ncipollo/release-action@v1.14.0
         with:
-          package-name: block-breaker
           token: ${{ secrets.GH_TOKEN }}
-          release-type: simple
-          path: /home/runner/.local/share/godot/archives/WindowsDesktop.zip
+          tag: ${{ github.ref_name }}
+          artifacts: ${{ steps.godotExport.outputs.archive_directory }}/WindowsDesktop.zip
+          generateReleaseNotes: true
 
       # - name: Install butler
       #   run: |
