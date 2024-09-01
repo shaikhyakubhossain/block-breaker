@@ -20,7 +20,7 @@ jobs:
           godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_export_templates.tpz
           relative_project_path: ./
           archive_output: true
-          cache: true
+          # cache: true
 
       - name: release
         uses: googleapis/release-please-action@v3.1.2
@@ -28,7 +28,7 @@ jobs:
           package-name: block-breaker
           token: ${{ secrets.GH_TOKEN }}
           release-type: simple
-          path: ${{ steps.godotExport.outputs.archive_directory }}/*
+          path: ${{ steps.godotExport.outputs.archive_directory }}/WindowsDesktop.zip
 
       # - name: Install butler
       #   run: |
