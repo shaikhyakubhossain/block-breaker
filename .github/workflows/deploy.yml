@@ -16,23 +16,23 @@ jobs:
         id: godotExport
         uses: firebelley/godot-export@v5.2.1
         with:
-          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_linux.x86_64.zip
-          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_export_templates.tpz
+          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.3/mono/Godot_v4.3-stable_mono_linux_x86_64.zip
+          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.3/mono/Godot_v4.3-stable_mono_export_templates.tpz
           relative_project_path: ./
-          # archive_output: true
+          archive_output: true
           # cache: true
 
-      - name: List Directory Contents
-        run: ls -la /home/runner/.local/share/godot/builds/WindowsDesktop/
+      # - name: List Archive Directory Contents
+      #   run: ls -la ${{ steps.godotExport.outputs.archive_directory }}
         
 
-      # - name: release
-      #   uses: ncipollo/release-action@v1.14.0
-      #   with:
-      #     token: ${{ secrets.GH_TOKEN }}
-      #     tag: ${{ github.ref_name }}
-      #     artifacts: ${{ steps.godotExport.outputs.archive_directory }}/WindowsDesktop.zip
-      #     generateReleaseNotes: true
+      - name: release
+        uses: ncipollo/release-action@v1.14.0
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          tag: ${{ github.ref_name }}
+          artifacts: ${{ steps.godotExport.outputs.archive_directory }}/block-breaker-win-64.zip
+          generateReleaseNotes: true
 
       # - name: Install butler
       #   run: |
