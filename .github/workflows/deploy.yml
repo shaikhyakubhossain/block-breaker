@@ -22,8 +22,8 @@ jobs:
           # archive_output: true
           # cache: true
 
-      - name: List Export Contents
-        run: ls -la ${{ steps.godotExport.outputs }}
+      - name: List Directory Contents
+        run: ls -la /home/runner/.local/share/godot/builds/WindowsDesktop/
         
 
       # - name: release
