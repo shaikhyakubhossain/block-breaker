@@ -22,17 +22,17 @@ jobs:
           archive_output: true
           # cache: true
 
-      - name: List Archive Directory Contents
-        run: ls -la ${{ steps.godotExport.outputs.archive_directory }}
+      # - name: List Archive Directory Contents
+      #   run: ls -la ${{ steps.godotExport.outputs.archive_directory }}
         
 
-      # - name: release
-      #   uses: googleapis/release-please-action@v3.1.2
-      #   with:
-      #     package-name: block-breaker
-      #     token: ${{ secrets.GH_TOKEN }}
-      #     release-type: simple
-      #     path: ${{ steps.godotExport.outputs.archive_directory }}/WindowsDesktop.zip
+      - name: release
+        uses: googleapis/release-please-action@v3.1.2
+        with:
+          package-name: block-breaker
+          token: ${{ secrets.GH_TOKEN }}
+          release-type: simple
+          path: /home/runner/.local/share/godot/archives/WindowsDesktop.zip
 
       # - name: Install butler
       #   run: |
