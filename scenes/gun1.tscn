@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://drjbcp6peu15r"]
+
+[ext_resource type="Script" path="res://scripts/weapon/Gun1.cs" id="1_6p8i0"]
+[ext_resource type="PackedScene" uid="uid://bq7iioax2y4nl" path="res://scenes/projectile.tscn" id="2_d0mwt"]
+
+[sub_resource type="Gradient" id="Gradient_piq5i"]
+offsets = PackedFloat32Array(0, 0.214286, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.214286, 0.214286, 0.214286, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fqrt2"]
+gradient = SubResource("Gradient_piq5i")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykqf5"]
+size = Vector2(31.4463, 21)
+
+[node name="gun1" type="StaticBody2D" groups=["weaponGroup"]]
+position = Vector2(1.90735e-06, 0)
+scale = Vector2(0.945313, 0.1875)
+script = ExtResource("1_6p8i0")
+ProjectileScene = ExtResource("2_d0mwt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(15.4711, 1.90735e-06)
+scale = Vector2(0.549587, 0.5)
+texture = SubResource("GradientTexture2D_fqrt2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(15.4711, 1.90735e-06)
+shape = SubResource("RectangleShape2D_ykqf5")

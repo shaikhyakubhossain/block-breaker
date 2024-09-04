@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 
 project/assembly_name="block-breaker"
 
+[global_group]
+
+weaponGroup=""
+
 [input]
 
 move-left={
