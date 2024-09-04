@@ -1,4 +1,4 @@
-name: Export, Zip, and Deploy to itch.io
+name: Export, Zip, and Release
 
 on:
   push:
