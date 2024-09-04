@@ -2,8 +2,6 @@ name: Export, Zip, and Release
 
 on:
   push:
-    branches:
-      - main
     tags:
       - 'v-*'
 jobs:
