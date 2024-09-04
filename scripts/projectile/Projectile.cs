@@ -21,7 +21,7 @@ public partial class Projectile : StaticBody2D
 	{
 		Position += velocity * (float)delta;
 
-		// myMethod.detectCollisions(area, this, "onCollision");
+		myMethod.detectCollisions(area, this, "onCollision");
 
 	}
 
