@@ -20,7 +20,7 @@ public partial class Gun1 : StaticBody2D
 	
 	public override void _Process(double delta)
 	{
-		if (shouldFire && Input.IsKeyPressed(Key.F))  
+		if (shouldFire && (Input.IsKeyPressed(Key.F) || Input.IsActionPressed("fire-left-mouse")))  
 		{
 			myMethod.DelayedFunction(reload, rateOfFire);
 			SpawnProjectile();

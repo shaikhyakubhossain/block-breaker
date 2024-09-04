@@ -26,21 +26,21 @@ jobs:
       #   run: ls -la ${{ steps.godotExport.outputs.archive_directory }}
         
 
-      - name: release
-        uses: ncipollo/release-action@v1.14.0
+      # - name: release
+      #   uses: ncipollo/release-action@v1.14.0
+      #   with:
+      #     token: ${{ secrets.GH_TOKEN }}
+      #     tag: ${{ github.ref_name }}
+      #     artifacts: ${{ steps.godotExport.outputs.archive_directory }}/block-breaker-win-64.zip
+      #     generateReleaseNotes: true
+          
+
+      - name: Publish to Itch
+        uses: Ayowel/butler-to-itch@v1.0.0
         with:
-          token: ${{ secrets.GH_TOKEN }}
-          tag: ${{ github.ref_name }}
-          artifacts: ${{ steps.godotExport.outputs.archive_directory }}/block-breaker-win-64.zip
-          generateReleaseNotes: true
-
-      # - name: Install butler
-      #   run: |
-      #     curl -L https://broth.itch.ovh/butler/linux-amd64/head/butler.tar.gz | tar xz
-      #     sudo mv butler /usr/local/bin/butler
-
-      # - name: Deploy to itch.io
-      #   env:
-      #     BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_API_KEY }}
-      #   run: |
-      #     butler push builds/zipped/block-breaker-win-64.zip shaikh-yakub-hossain/block-breaker:windows
+          butler_key: ${{secrets.ITCHIO_API_KEY}}
+          itch_user: shaikh-yakub-hossain
+          itch_game: block-breaker
+          version: ${{ github.ref_name }}
+          files: ${{ steps.godotExport.outputs.archive_directory }}//block-breaker-win-64.zip
+    
