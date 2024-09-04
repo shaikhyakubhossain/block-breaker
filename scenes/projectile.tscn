@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq7iioax2y4nl"]
+
+[ext_resource type="Script" path="res://scripts/projectile/Projectile.cs" id="1_qospy"]
+
+[sub_resource type="Gradient" id="Gradient_3sxte"]
+offsets = PackedFloat32Array(0, 0.192, 0.552, 0.84, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.245509, 0.158176, 0.13908, 1, 0.651543, 0.419775, 0.369098, 1, 0.757325, 0.595915, 0.560622, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_65co7"]
+gradient = SubResource("Gradient_3sxte")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfk8y"]
+size = Vector2(7, 7)
+
+[node name="projectile" type="StaticBody2D"]
+script = ExtResource("1_qospy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = SubResource("GradientTexture2D_65co7")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_qfk8y")
