@@ -2,14 +2,14 @@ using Godot;
 
 public partial class Gun1 : StaticBody2D
 {
-	Methods myMethod = new Methods();
+	Methods myMethods = new Methods();
 
 
 	[Export]
 	public PackedScene ProjectileScene;
 
 	[Export]
-	public int rateOfFire = 700;
+	public int rateOfFire = 500;
 	
 	bool shouldFire = true;
 	
@@ -22,7 +22,7 @@ public partial class Gun1 : StaticBody2D
 	{
 		if (shouldFire && (Input.IsKeyPressed(Key.F) || Input.IsActionPressed("fire-left-mouse")))  
 		{
-			myMethod.DelayedFunction(reload, rateOfFire);
+			myMethods.DelayedFunction(reload, rateOfFire);
 			SpawnProjectile();
 			shouldFire = false;
 		}
