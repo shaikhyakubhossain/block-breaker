@@ -26,13 +26,13 @@ jobs:
       #   run: ls -la ${{ steps.godotExport.outputs.archive_directory }}
         
 
-      # - name: release
-      #   uses: ncipollo/release-action@v1.14.0
-      #   with:
-      #     token: ${{ secrets.GH_TOKEN }}
-      #     tag: ${{ github.ref_name }}
-      #     artifacts: ${{ steps.godotExport.outputs.archive_directory }}/block-breaker-win-64.zip
-      #     generateReleaseNotes: true
+      - name: release
+        uses: ncipollo/release-action@v1.14.0
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          tag: ${{ github.ref_name }}
+          artifacts: ${{ steps.godotExport.outputs.archive_directory }}/block-breaker-win-64.zip
+          generateReleaseNotes: true
           
 
       - name: Publish to Itch
