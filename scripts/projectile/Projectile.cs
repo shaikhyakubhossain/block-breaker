@@ -14,13 +14,13 @@ public partial class Projectile : StaticBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		area = this.GetNode<Area2D>("Area2D");
+		area = GetNode<Area2D>("Area2D");
 		velocity = Transform.X * Speed;
 
 
 		myMethods.DelayedFunction(timeOutMethod, timeOutInMS);
-		myMethods.detectCollisions(area, this, "onCollision");
-
+		// myMethods.addSignalForBodyEntered(area, this, "onCollision");
+		area.BodyEntered += onCollision;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,9 +29,12 @@ public partial class Projectile : StaticBody2D
 		Position += velocity * (float)delta;
 	}
 
-	public void onCollision(Node body){
-		if(body.Name == "CharacterBody2D"){
+	private void onCollision(Node body){
+		if(body.GetClass() == "CharacterBody2D"){
 			body.QueueFree();
+			if(body.Name == "player"){
+				myMethods.changeScene(body, "scenes/gameOver.tscn");
+			};
 		}
 		QueueFree();
 	}

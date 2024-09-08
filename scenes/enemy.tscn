@@ -61,12 +61,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1es4"]
-size = Vector2(20, 18)
+size = Vector2(22, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4rct"]
-size = Vector2(20, 19)
+size = Vector2(22, 20)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_fjvi5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -77,9 +79,7 @@ frame_progress = 0.642288
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_p1es4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_s4rct")
