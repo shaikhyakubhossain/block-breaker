@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://s1lywrfrfcuw"]
+[gd_scene load_steps=6 format=3 uid="uid://s1lywrfrfcuw"]
 
 [ext_resource type="PackedScene" uid="uid://co5lctkrfkckh" path="res://scenes/player.tscn" id="1_qdnoq"]
 [ext_resource type="PackedScene" uid="uid://dd5yeoocw4i1l" path="res://scenes/tileMap.tscn" id="2_1nn22"]
 [ext_resource type="PackedScene" uid="uid://drjbcp6peu15r" path="res://scenes/gun1.tscn" id="3_rtpxt"]
 [ext_resource type="PackedScene" uid="uid://cs61txnxl7r00" path="res://scenes/enemy.tscn" id="4_aboyb"]
+[ext_resource type="PackedScene" uid="uid://bh7spkeocv5dh" path="res://scenes/spawner.tscn" id="5_dwtif"]
 
 [node name="game" type="Node2D"]
 position = Vector2(-117, -101)
@@ -23,3 +24,11 @@ position = Vector2(50, -6)
 
 [node name="enemy" parent="." instance=ExtResource("4_aboyb")]
 position = Vector2(268, -105)
+
+[node name="enemySpawner" parent="." instance=ExtResource("5_dwtif")]
+position = Vector2(39, -328)
+enemyScene = ExtResource("4_aboyb")
+
+[node name="enemySpawner2" parent="." instance=ExtResource("5_dwtif")]
+position = Vector2(272, -258)
+enemyScene = ExtResource("4_aboyb")
