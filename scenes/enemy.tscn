@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cs61txnxl7r00"]
+[gd_scene load_steps=14 format=3 uid="uid://cs61txnxl7r00"]
 
 [ext_resource type="Script" path="res://scripts/enemy/Enemy.cs" id="1_fjvi5"]
 [ext_resource type="Texture2D" uid="uid://dt2idjesw0vs3" path="res://assets/sprites/dynamic/enemyBlockIdle.png" id="1_oepy5"]
+[ext_resource type="PackedScene" uid="uid://6dnpe6lk5x4t" path="res://scenes/healthBar.tscn" id="3_c53l3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lp2mt"]
 atlas = ExtResource("1_oepy5")
@@ -83,3 +84,12 @@ shape = SubResource("RectangleShape2D_p1es4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_s4rct")
+
+[node name="healthBar" parent="." instance=ExtResource("3_c53l3")]
+offset_left = -18.0
+offset_top = -22.0
+offset_right = 18.0
+offset_bottom = -18.0
+max_value = 30.0
+value = 30.0
+show_percentage = false

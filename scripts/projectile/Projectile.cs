@@ -31,10 +31,7 @@ public partial class Projectile : StaticBody2D
 
 	private void onCollision(Node body){
 		if(body.GetClass() == "CharacterBody2D"){
-			body.QueueFree();
-			if(body.Name == "player"){
-				myMethods.changeScene(body, "scenes/gameOver.tscn");
-			};
+			((IHasHealth)body).takeDamage(10);
 		}
 		QueueFree();
 	}

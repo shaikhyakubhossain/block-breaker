@@ -2,11 +2,10 @@ using Godot;
 
 public partial class Player : CharacterBody2D , IHasHealth
 {
-	public float health { get; private set; } = 100;
+	public float health { get; private set; } = 100.0f;
 	[Export] public float Speed = 300.0f;
 	[Export] public float JumpVelocity = -400.0f;
 	[Export] public Node2D currentWeapon;
-	// [Export] public int health = 100;
 	private Methods myMethods = new Methods();
 	private Area2D area;
 	private Vector2 velocity;
@@ -89,7 +88,6 @@ public partial class Player : CharacterBody2D , IHasHealth
 
 	public void takeDamage(int damage){
 		health -= damage;
-		GD.Print(health);
 		if(health <= 0){
 			myMethods.changeScene(this, "scenes/gameOver.tscn");
 		}

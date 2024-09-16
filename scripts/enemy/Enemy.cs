@@ -1,15 +1,15 @@
 using Godot;
 
-public partial class Enemy : CharacterBody2D
+public partial class Enemy : CharacterBody2D, IHasHealth
 {
+	public float health { get; private set; } = 30.0f;
 	[Export] public float Speed = 100.0f;
 	[Export] public float JumpVelocity = -400.0f;
 	[Export] public Node2D target;
+	[Export] public int damage = 10;
 
 	Vector2 velocity;
 	Area2D area;
-	Methods myMethods = new Methods();
-
 
 	public override void _Ready()
 	{
@@ -17,7 +17,6 @@ public partial class Enemy : CharacterBody2D
 		target = GetParent().GetNode<CharacterBody2D>("player");
 		// myMethods.addSignalForBodyEntered(area, this, "onCollision");
 		area.BodyEntered += onCollision;
-
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -47,10 +46,15 @@ public partial class Enemy : CharacterBody2D
 		}
 	}
 	private void onCollision(Node body){
-		// GD.Print("enemy: ", body.Name);
 		if(body == target){
-			myMethods.changeScene(body, "scenes/gameOver.tscn");
-			// body.QueueFree();
+			((Player)target).takeDamage(10);
+		}
+	}
+
+	public void takeDamage(int damage){
+		health -= damage;
+		if(health <= 0){
+			QueueFree();
 		}
 	}
 }
