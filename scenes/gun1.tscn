@@ -16,7 +16,7 @@ size = Vector2(34.9091, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6shbp"]
 size = Vector2(34.3306, 31.3333)
 
-[node name="gun1" type="StaticBody2D" groups=["weaponGroup"]]
+[node name="Gun1" type="StaticBody2D" groups=["weaponGroup"]]
 position = Vector2(1.90735e-06, 0)
 scale = Vector2(0.945313, 0.1875)
 collision_layer = 2

@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://co5lctkrfkckh"]
+[gd_scene load_steps=13 format=3 uid="uid://co5lctkrfkckh"]
 
 [ext_resource type="Texture2D" uid="uid://byfyj11ph26y2" path="res://assets/sprites/dynamic/blockIdle.png" id="1_jgs4c"]
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_vmpwh"]
+[ext_resource type="PackedScene" uid="uid://6dnpe6lk5x4t" path="res://scenes/healthBar.tscn" id="3_l1pug"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7323g"]
 atlas = ExtResource("1_jgs4c")
@@ -63,7 +64,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klsyc"]
 size = Vector2(21, 19)
 
-[node name="player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_vmpwh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -80,3 +81,9 @@ shape = SubResource("RectangleShape2D_klsyc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_klsyc")
+
+[node name="healthBar" parent="." instance=ExtResource("3_l1pug")]
+offset_left = -264.0
+offset_top = 140.0
+offset_right = -45.0
+offset_bottom = 155.0
