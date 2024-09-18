@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://co5lctkrfkckh"]
+[gd_scene load_steps=14 format=3 uid="uid://co5lctkrfkckh"]
 
 [ext_resource type="Texture2D" uid="uid://byfyj11ph26y2" path="res://assets/sprites/dynamic/blockIdle.png" id="1_jgs4c"]
 [ext_resource type="Script" path="res://scripts/player/Player.cs" id="1_vmpwh"]
 [ext_resource type="PackedScene" uid="uid://6dnpe6lk5x4t" path="res://scenes/healthBar.tscn" id="3_l1pug"]
+[ext_resource type="PackedScene" uid="uid://du3uxi8vccybr" path="res://scenes/expBar.tscn" id="4_68ooa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7323g"]
 atlas = ExtResource("1_jgs4c")
@@ -83,7 +84,13 @@ shape = SubResource("RectangleShape2D_klsyc")
 shape = SubResource("RectangleShape2D_klsyc")
 
 [node name="healthBar" parent="." instance=ExtResource("3_l1pug")]
-offset_left = -264.0
-offset_top = 140.0
-offset_right = -45.0
-offset_bottom = 155.0
+offset_left = -273.0
+offset_top = -130.0
+offset_right = -131.0
+offset_bottom = -107.0
+
+[node name="expBar" parent="." instance=ExtResource("4_68ooa")]
+offset_left = -107.0
+offset_top = 131.0
+offset_right = 107.0
+offset_bottom = 154.0

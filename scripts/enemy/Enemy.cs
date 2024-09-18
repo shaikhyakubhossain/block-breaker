@@ -2,11 +2,12 @@ using Godot;
 
 public partial class Enemy : CharacterBody2D, IHasHealth
 {
-	public float health { get; private set; } = 30.0f;
+	[Export] public float health { get; private set; } = 30.0f;
 	[Export] public float Speed = 100.0f;
 	[Export] public float JumpVelocity = -400.0f;
-	[Export] public Node2D target;
-	[Export] public int damage = 10;
+	[Export] public float giveExp = 50.0f;
+	private Node2D target;
+	[Export] public float damage = 10;
 
 	Vector2 velocity;
 	Area2D area;
@@ -54,6 +55,7 @@ public partial class Enemy : CharacterBody2D, IHasHealth
 	public void takeDamage(int damage){
 		health -= damage;
 		if(health <= 0){
+			((Player)target).gainExp(giveExp);
 			QueueFree();
 		}
 	}

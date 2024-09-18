@@ -2,7 +2,10 @@ using Godot;
 
 public partial class Player : CharacterBody2D , IHasHealth
 {
-	public float health { get; private set; } = 100.0f;
+	[Export] public float health { get; private set; } = 100.0f;
+	[Export] public float currentExp = 0.0f;
+	[Export] public float expReqForNextLevel = 100.0f;
+	[Export] public float level = 1.0f;
 	[Export] public float Speed = 300.0f;
 	[Export] public float JumpVelocity = -400.0f;
 	[Export] public Node2D currentWeapon;
@@ -90,6 +93,14 @@ public partial class Player : CharacterBody2D , IHasHealth
 		health -= damage;
 		if(health <= 0){
 			myMethods.changeScene(this, "scenes/gameOver.tscn");
+		}
+	}
+
+	public void gainExp(float amountOfExpToGain){
+		currentExp += amountOfExpToGain;
+		if(currentExp >= expReqForNextLevel){
+			currentExp = 0;
+			level += 1;
 		}
 	}
 
