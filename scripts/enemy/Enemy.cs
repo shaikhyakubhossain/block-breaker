@@ -6,8 +6,8 @@ public partial class Enemy : CharacterBody2D, IHasHealth
 	[Export] public float Speed = 100.0f;
 	[Export] public float JumpVelocity = -400.0f;
 	[Export] public float giveExp = 50.0f;
-	private Node2D target;
 	[Export] public float damage = 10;
+	private Node2D target;
 
 	Vector2 velocity;
 	Area2D area;
@@ -28,6 +28,10 @@ public partial class Enemy : CharacterBody2D, IHasHealth
 		if (!IsOnFloor())
 		{
 			velocity += GetGravity() * (float)delta;
+			if (velocity.Y >= 3000.0f)
+			{
+				Falling();
+			}
 		}
 
 
@@ -50,6 +54,11 @@ public partial class Enemy : CharacterBody2D, IHasHealth
 		if(body == target){
 			((Player)target).takeDamage(10);
 		}
+	}
+
+	private void Falling()
+	{
+		QueueFree();
 	}
 
 	public void takeDamage(int damage){

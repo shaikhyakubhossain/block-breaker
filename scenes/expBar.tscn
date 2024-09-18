@@ -19,9 +19,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_q5owh")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5x7wp")
+max_value = 400.0
 script = ExtResource("1_d1x7a")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="level" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = -60.0
 offset_bottom = 23.0
