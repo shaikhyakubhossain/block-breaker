@@ -88,9 +88,10 @@ offset_left = -273.0
 offset_top = -130.0
 offset_right = -131.0
 offset_bottom = -107.0
+showWhenFull = true
 
 [node name="expBar" parent="." instance=ExtResource("4_68ooa")]
-offset_left = -107.0
-offset_top = 131.0
-offset_right = 107.0
-offset_bottom = 154.0
+offset_left = -66.0
+offset_top = 130.0
+offset_right = 148.0
+offset_bottom = 153.0
