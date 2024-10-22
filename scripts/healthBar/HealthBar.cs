@@ -9,7 +9,7 @@ public partial class HealthBar : ProgressBar
 	public override void _Ready()
 	{
 		nodeWithHealthBar = GetParent<IHasHealth>();
-		MaxValue = nodeWithHealthBar.health;
+		MaxValue = nodeWithHealthBar.maxHealth;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
