@@ -1,16 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://s1lywrfrfcuw"]
+[gd_scene load_steps=7 format=3 uid="uid://s1lywrfrfcuw"]
 
 [ext_resource type="PackedScene" uid="uid://co5lctkrfkckh" path="res://scenes/player.tscn" id="1_qdnoq"]
 [ext_resource type="PackedScene" uid="uid://dd5yeoocw4i1l" path="res://scenes/tileMap.tscn" id="2_1nn22"]
+[ext_resource type="PackedScene" uid="uid://cfbw0c7sxysdt" path="res://scenes/powerUpScreen.tscn" id="2_w4xng"]
 [ext_resource type="PackedScene" uid="uid://drjbcp6peu15r" path="res://scenes/gun1.tscn" id="3_rtpxt"]
 [ext_resource type="PackedScene" uid="uid://cs61txnxl7r00" path="res://scenes/enemy.tscn" id="4_aboyb"]
 [ext_resource type="PackedScene" uid="uid://bh7spkeocv5dh" path="res://scenes/spawner.tscn" id="5_dwtif"]
 
 [node name="game" type="Node2D"]
-position = Vector2(-117, -101)
+position = Vector2(275, 224)
 
 [node name="player" parent="." instance=ExtResource("1_qdnoq")]
 position = Vector2(12, -75)
+powerUpUI = ExtResource("2_w4xng")
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(1, 14)

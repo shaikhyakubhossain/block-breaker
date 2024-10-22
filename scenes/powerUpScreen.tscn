@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfbw0c7sxysdt"]
+
+[ext_resource type="Script" path="res://scripts/PowerUpUI/PowerUpUI.cs" id="1_bhwa7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6uc23"]
+bg_color = Color(0, 0.273729, 0.177971, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 10
+
+[sub_resource type="Theme" id="Theme_i6qfr"]
+Button/colors/font_color = Color(0.640869, 0.962658, 0.649049, 1)
+Button/colors/font_disabled_color = Color(0.720416, 0.612112, 0.714297, 0.5)
+Button/styles/normal = SubResource("StyleBoxFlat_6uc23")
+
+[node name="powerUpScreen" type="Control"]
+process_mode = 3
+z_index = 4
+layout_mode = 3
+anchor_right = 0.5
+anchor_bottom = 0.363
+offset_bottom = -0.223999
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bhwa7")
+
+[node name="btnContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.512
+anchor_right = 0.5
+anchor_bottom = 0.512
+offset_left = -169.0
+offset_top = -28.32
+offset_right = 461.0
+offset_bottom = 76.68
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_constants/separation = 15
+
+[node name="Button" type="Button" parent="btnContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_i6qfr")
+theme_override_font_sizes/font_size = 21
+text = "Movement Speed"
+
+[node name="Button2" type="Button" parent="btnContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_i6qfr")
+theme_override_font_sizes/font_size = 21
+text = "Rate of Fire"
+
+[node name="Button3" type="Button" parent="btnContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_i6qfr")
+theme_override_font_sizes/font_size = 21
+text = "Max Health"
