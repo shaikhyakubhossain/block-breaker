@@ -4,13 +4,17 @@ using Godot;
 public partial class Player : CharacterBody2D, IHasHealth
 {
 	[Export] public float health { get; private set; } = 100.0f;
+	[Export] public float maxHealth { get; set; } = 100.0f;
+	[Export] public float healthRegenerationRate { get; private set; } = 0.01f;
 	[Export] public float currentExp = 0.0f;
 	[Export] public float expReqForNextLevel = 100.0f;
 	[Export] public float level = 1.0f;
-	[Export] public float Speed = 300.0f;
+	[Export] public float movementSpeed = 300.0f;
 	[Export] public float JumpVelocity = -400.0f;
 	[Export] public Node2D currentWeapon;
 	private Methods myMethods = new Methods();
+	[Export]
+	private PackedScene powerUpUI;
 	private Area2D area;
 	private Vector2 velocity;
 	private bool isWeaponEquipped = false;
@@ -23,6 +27,9 @@ public partial class Player : CharacterBody2D, IHasHealth
 
 	public override void _PhysicsProcess(double delta)
 	{
+
+		healthRegeneration();
+
 		velocity = Velocity;
 		// GD.Print("hi ");
 		if (!IsOnFloor())
@@ -46,11 +53,11 @@ public partial class Player : CharacterBody2D, IHasHealth
 		Vector2 direction = Input.GetVector("move-left", "move-right", "ui_up", "ui_down");
 		if (direction != Vector2.Zero)
 		{
-			velocity.X = direction.X * Speed;
+			velocity.X = direction.X * movementSpeed;
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, movementSpeed);
 		}
 
 		Velocity = velocity;
@@ -99,6 +106,14 @@ public partial class Player : CharacterBody2D, IHasHealth
 		}
 	}
 
+	public void healthRegeneration()
+	{
+		if (health < maxHealth)
+		{
+			health += healthRegenerationRate;
+		}
+	}
+
 	public void gainExp(float amountOfExpToGain)
 	{
 		currentExp += amountOfExpToGain;
@@ -107,6 +122,12 @@ public partial class Player : CharacterBody2D, IHasHealth
 			currentExp = 0;
 			level += 1;
 			expReqForNextLevel = level * 100;
+			// myMethods.changeScene(this, "scenes/powerUpScreen.tscn");
+			var powerUp = (PowerUpUI)powerUpUI.Instantiate();
+			GD.Print(powerUp);
+			GetParent().AddChild(powerUp);
+			powerUp.GlobalPosition = GlobalPosition;
+			GetTree().Paused = true;
 		}
 	}
 

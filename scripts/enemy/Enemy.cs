@@ -3,9 +3,11 @@ using Godot;
 public partial class Enemy : CharacterBody2D, IHasHealth
 {
 	[Export] public float health { get; private set; } = 30.0f;
+	[Export] public float maxHealth { get; private set; } = 30.0f;
+	[Export] public float healthRegenerationRate { get; private set; } = 0.0001f;
 	[Export] public float Speed = 100.0f;
 	[Export] public float JumpVelocity = -400.0f;
-	[Export] public float giveExp = 50.0f;
+	[Export] public float giveExp = 100.0f;
 	[Export] public float damage = 10;
 	private Node2D target;
 
