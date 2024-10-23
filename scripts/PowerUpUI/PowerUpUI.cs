@@ -4,8 +4,8 @@ using System;
 public partial class PowerUpUI : Control
 {
 
-	[Export] public float increasedMovementSpeed = 100;
-	[Export] public int increasedRateOfFire = 15;
+	[Export] public float increasedMovementSpeed = 30;
+	[Export] public int increasedRateOfFire = 50;
 	[Export] public float increasedMaxHealth = 10;
 	private Player player;
 	private Gun1 gun1;
@@ -21,7 +21,7 @@ public partial class PowerUpUI : Control
 		gun1 = player.GetChild<Gun1>(6);
 		healthBar = player.GetChild<ProgressBar>(3);
 		// GD.Print(player.GetChild<Gun1>(6), gun1.rateOfFire);
-		GD.Print(player.GetChildren());
+		// GD.Print(player.GetChildren());
 		btnContainer = GetNode<HBoxContainer>("btnContainer");
 		
 		movementSpeedBtn = (Button)btnContainer.GetChild(0);;
@@ -34,23 +34,24 @@ public partial class PowerUpUI : Control
 
 	}
 	private void onRateOfFireBtnPressed(){
-		GD.Print("rate of fire btn pressed");
+		if(gun1.rateOfFire > 50){
 		gun1.rateOfFire -= increasedRateOfFire;
-		GD.Print(gun1.rateOfFire);
+		// GD.Print(gun1.rateOfFire);
 		GetTree().Paused = false;
 		QueueFree();
-		
+		}
+		else{
+			GD.Print("Max rate of fire reached");
+		}
 	}
 	private void onMaxHealthBtnPressed(){
-		GD.Print("max health btn pressed");
 		player.maxHealth += increasedMaxHealth;
 		healthBar.MaxValue += increasedMaxHealth;
 		GetTree().Paused = false;
 		QueueFree();
 	}
 	private void onMovementSpeedBtnPressed(){
-		GD.Print("movement speed btn pressed");
-		player.movementSpeed += 100;
+		player.movementSpeed += increasedMovementSpeed;
 		GetTree().Paused = false;
 		QueueFree();
 	}
